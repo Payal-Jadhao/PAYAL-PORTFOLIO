@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const NAV = [
   ['about', 'About'],
@@ -9,35 +9,45 @@ const NAV = [
 ];
 
 const SKILLS = [
-  ['Languages', ['Java', 'Core Java', 'Java 8', 'TypeScript', 'JavaScript', 'NodeJS']],
-  ['Backend & Architecture', ['Spring Boot', 'Spring Framework', 'Spring Data JPA', 'Spring Security', 'Hibernate', 'REST APIs', 'JWT', 'Microservices', 'Web Services']],
-  ['Frontend', ['React.js', 'React Hooks', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Axios']],
-  ['Databases', ['MySQL', 'MongoDB', 'PostgreSQL', 'SQL', 'Query Optimization']],
-  ['DevOps & Cloud', ['Docker', 'Kubernetes', 'CI/CD Pipelines', 'Git', 'GitHub', 'Maven', 'Postman', 'Google Cloud']],
-  ['AI & Practices', ['Gemini AI API', 'Prompt Engineering', 'LLM Integration', 'Design Thinking', 'OOP', 'Agile / Scrum', 'Code Reviews', 'Debugging & Troubleshooting']],
+  ['Programming Languages', ['Java', 'Core Java', 'Java 8', 'Java 21', 'TypeScript', 'JavaScript', 'NodeJS', 'OOP']],
+  ['Backend & Architecture', ['Spring Boot', 'Spring Framework', 'Spring Data JPA', 'Spring Security', 'Hibernate', 'REST APIs', 'Web Services', 'Microservices Architecture', 'JWT', 'OAuth2', 'WebSocket (STOMP)', 'Java Full Stack Development']],
+  ['Frontend', ['React.js', 'React Hooks', 'HTML5', 'CSS3', 'Tailwind CSS', 'Axios']],
+  ['Database', ['MySQL', 'MongoDB', 'PostgreSQL', 'H2', 'SQL', 'Query Optimization']],
+  ['DevOps & Deployment', ['Docker', 'Kubernetes', 'CI/CD Pipelines', 'Google Cloud']],
+  ['Research & AI', ['Prompt Engineering', 'LLM Integration (Gemini AI API)', 'RAG', 'Design Thinking']],
+  ['Tools & Practices', ['Git', 'GitHub', 'Maven', 'Postman', 'Swagger / OpenAPI', 'Agile Methodology', 'Code Reviews', 'Debugging & Troubleshooting', 'Collaboration Tools']],
 ];
 
 const PROJECTS = [
   {
     name: 'DevPrepPal',
     kind: 'AI-Powered Developer Preparation Platform · Final Year B.E. R&D Project',
-    text: 'A secure Spring Boot backend architecture with JWT authentication and MongoDB, paired with a dynamic React.js interface for interview routing, live chat, quizzes, and score analytics. Explores context-aware interview preparation by generating up to 25 role-specific questions per session using the Gemini AI API.',
     points: [
-      'Investigated and compared prompt-engineering strategies (structured vs. open-ended prompting, context-window design) to improve question relevance and accuracy',
-      'Designed Spring Security & JWT backend with MongoDB, achieving ~5% improvement in interview lifecycle processing',
-      'Built and iteratively tested React.js UI through feedback cycles, improving candidate engagement by ~10%',
-      'Integrated containerization and deployment readiness with Docker and microservices architecture'
+      'Designed a secure Java/Spring Boot backend with Spring Security, JWT authentication and MongoDB, achieving a ~5% improvement in interview lifecycle processing.',
+      'Designed an AI interview-preparation system using Gemini AI to generate context-aware, role-specific questions from candidate resumes; compared prompt-engineering strategies, supporting up to 25 questions per session.',
+      'Built and tested a React.js UI (interview routing, live chat, quizzes, score analytics) via user-feedback cycles, improving engagement by approx. 10%.',
     ],
-    stack: ['Java', 'Spring Boot', 'Spring Security', 'MongoDB', 'JWT', 'React.js', 'Gemini AI API', 'Microservices', 'Docker', 'REST APIs'],
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'MongoDB', 'JWT', 'React.js', 'Gemini AI API', 'REST APIs', 'Microservices', 'Docker'],
+  },
+  {
+    name: 'TeamCRM',
+    kind: 'CRM & Task Management Platform with AI Copilot · R&D Project',
+    link: ['https://team-crm-iota.vercel.app', 'View live'],
+    points: [
+      'Built a full-stack CRM and Jira-style task platform with Admin, Manager and Employee roles using JWT (access + refresh), BCrypt and method-level RBAC.',
+      'Designed a server-authoritative time tracker (UTC clock, one active timer per user, auto-pause) with live WebSocket sync to prevent time tampering.',
+      'Developed an agentic Gemini AI Copilot using RAG over live task, deal, user and meeting data, with cloud/offline modes and one-click AI-to-task conversion.',
+      'Implemented Google OAuth2 SSO and OTP-based authentication; documented REST APIs with Swagger / OpenAPI.',
+    ],
+    stack: ['Java 21', 'Spring Boot 3', 'Spring Security', 'JWT', 'OAuth2', 'WebSocket (STOMP)', 'PostgreSQL', 'H2', 'React 19', 'TypeScript', 'Tailwind CSS', 'Gemini AI API', 'Swagger / OpenAPI'],
   },
   {
     name: 'Student Management System',
     kind: 'Full-Stack CRUD Application',
-    text: 'A layered Spring Boot application with Hibernate ORM and MySQL, exposing GET, POST, PUT, and DELETE endpoints tested via Postman. Features a modular React component architecture interacting via Axios.',
     points: [
-      'Engineered structured Controller, Service, and Repository layers with robust validation',
-      'Built reusable React components with responsive styling for complete student record workflows',
-      'Implemented transactional database operations with MySQL and Hibernate ORM'
+      'Layered Spring Boot app with Controller, Service and Repository layers, validation, and GET, POST, PUT, DELETE endpoints tested via Postman.',
+      'Transactional database operations with MySQL and Hibernate ORM.',
+      'Reusable React components with responsive styling, connected through Axios, covering complete student record workflows.',
     ],
     stack: ['React.js', 'Spring Boot', 'Hibernate', 'MySQL', 'REST APIs', 'Postman', 'JavaScript'],
   },
@@ -49,7 +59,7 @@ const CSS = `
 :root, .pf {
   --bg: #f4f7f6; --surface: #ffffff; --ink: #10201d; --muted: #52645f;
   --line: #d9e2df; --accent: #0b6b61; --accent-ink: #ffffff; --tint: #e3f0ed;
-  --code-bg: #10201d; --code-ink: #cfe3de; --code-key: #7fd8c6; --code-num: #f2c879;
+  --code-bg: #10201d; --code-ink: #cfe3de;
   --display: 'Bricolage Grotesque', system-ui, sans-serif;
   --body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   background: var(--bg); color: var(--ink); font-family: var(--body);
@@ -62,7 +72,6 @@ const CSS = `
     --code-bg: #08100f; --code-ink: #b8d3cc;
   }
 }
-/* global reset: overrides Vite/CRA default index.css that centers #root and darkens the sides */
 html, body, #root { margin: 0 !important; padding: 0 !important; width: 100% !important; max-width: none !important; min-width: 0 !important; display: block !important; text-align: left !important; place-items: initial !important; background: var(--bg) !important; color: var(--ink); }
 html { color-scheme: light dark; overflow-x: hidden; }
 body { overflow-x: hidden; }
@@ -78,7 +87,7 @@ html { scroll-behavior: smooth; }
 
 .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
 .sec { padding: clamp(56px, 9vw, 104px) 0; }
-.sec-head { margin-bottom: clamp(28px, 5vw, 48px); max-width: 560px; }
+.sec-head { margin-bottom: clamp(28px, 5vw, 48px); max-width: 620px; }
 .sec-head h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.75rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.1; }
 .sec-head p { color: var(--muted); margin-top: 10px; }
 
@@ -101,38 +110,15 @@ html { scroll-behavior: smooth; }
 
 /* hero */
 .hero { padding: clamp(112px, 16vw, 168px) 0 clamp(48px, 8vw, 88px); }
-.hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
-.status { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 0.85rem; color: var(--muted); margin-bottom: 22px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
-.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.5rem, 7vw, 4.6rem); line-height: 1.02; letter-spacing: -0.035em; }
-.hero .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); max-width: 540px; margin: 22px 0 32px; }
+.hero-in { max-width: 820px; }
+.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.035em; }
+.hero .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); margin: 22px 0 32px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.socials { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 32px; font-size: 0.92rem; color: var(--muted); }
-.socials a { border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color .2s, border-color .2s; }
-.socials a:hover { color: var(--accent); border-color: var(--accent); }
-
-.code { background: var(--code-bg); color: var(--code-ink); border-radius: 16px; border: 1px solid var(--line); overflow: hidden; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.82rem; box-shadow: 0 24px 48px -24px rgba(8, 30, 26, .45); }
-.code-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); color: #7f9892; font-size: 0.75rem; }
-.code-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4f4b; display: block; }
-.code-bar span { margin-left: 8px; }
-.code pre { margin: 0; padding: 18px 20px 22px; overflow-x: auto; line-height: 1.75; }
-.k { color: var(--code-key); } .n { color: var(--code-num); }
-
 .social-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .social-btns .btn { background: var(--surface); }
-.snap { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 3vw, 28px); display: grid; gap: 14px; box-shadow: 0 24px 48px -28px rgba(8, 30, 26, .35); }
-.snap-head { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-.snap-head strong { display: block; font-family: var(--display); font-size: 1.1rem; }
-.snap-head small { color: var(--muted); font-size: 0.88rem; }
-.avatar { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--display); font-weight: 800; flex: none; }
-.pillar { display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--tint); }
-.emo { font-size: 1.6rem; line-height: 1; flex: none; width: 40px; height: 40px; display: grid; place-items: center; background: var(--surface); border-radius: 12px; }
-.pillar h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; margin: 0 0 2px; }
-.pillar p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
-.c-item small { margin-bottom: 2px; }
 
 /* skills */
-.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 1.05rem; margin-bottom: 14px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -147,12 +133,11 @@ html { scroll-behavior: smooth; }
 .list li::marker { color: var(--accent); }
 
 /* projects */
-.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.project { display: flex; flex-direction: column; gap: 16px; padding: 28px; transition: border-color .2s, transform .2s; }
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: stretch; }
+.project { display: flex; flex-direction: column; gap: 16px; padding: 28px; transition: border-color .2s; }
 .project:hover { border-color: var(--accent); }
 .project h3 { font-size: 1.4rem; margin: 0; }
 .kind { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
-.project > p { color: var(--muted); font-size: 0.95rem; }
 .project .list { font-size: 0.92rem; }
 .project .tags { margin-top: auto; padding-top: 4px; }
 .p-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
@@ -160,7 +145,8 @@ html { scroll-behavior: smooth; }
 .p-top a:hover { text-decoration: underline; }
 
 /* education */
-.edu { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.edu { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+.edu > div { display: flex; flex-direction: column; }
 .edu h3.h { font-family: var(--display); font-weight: 700; font-size: 1.35rem; margin-bottom: 16px; }
 .edu .card + .card { margin-top: 12px; }
 .edu .card { padding: 20px 24px; }
@@ -170,33 +156,20 @@ html { scroll-behavior: smooth; }
 
 /* contact */
 .contact { background: var(--code-bg); color: var(--code-ink); border-radius: 24px; padding: clamp(32px, 6vw, 64px); display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; }
+.contact > * { min-width: 0; }
 .contact h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; color: #fff; }
 .contact p { margin-top: 12px; color: #a9c2bc; max-width: 440px; }
 .c-list { display: grid; gap: 10px; }
 .c-item { display: flex; gap: 14px; align-items: center; padding: 14px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; color: #e7f1ee; font-size: 0.95rem; word-break: break-word; transition: background .2s; }
 a.c-item:hover { background: rgba(255,255,255,.07); }
-.c-item small { display: block; color: #8fa8a2; font-size: 0.78rem; }
+.c-item small { display: block; color: #8fa8a2; font-size: 0.78rem; margin-bottom: 2px; }
 
 .foot { padding: 28px 0 36px; color: var(--muted); font-size: 0.85rem; text-align: center; }
 
-.hero-grid > * { min-width: 0; }
-.hero .lead { max-width: 560px; }
-.sec-head { max-width: 620px; }
-.skills, .projects, .edu { align-items: stretch; }
-.edu > div { display: flex; flex-direction: column; }
-.contact > * { min-width: 0; }
-@media (min-width: 1100px) {
-  .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
-  .skills { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* tablet */
 @media (max-width: 960px) {
-  .hero-grid { grid-template-columns: 1fr; }
   .skills { grid-template-columns: repeat(2, 1fr); }
   .contact { grid-template-columns: 1fr; }
 }
-/* mobile nav + layout */
 @media (max-width: 820px) {
   .nav-links { display: none; }
   .burger { display: inline-flex; }
@@ -210,7 +183,6 @@ a.c-item:hover { background: rgba(255,255,255,.07); }
   .skills { grid-template-columns: 1fr; }
   .actions .btn { flex: 1 1 100%; }
   .p-top { flex-direction: column; gap: 4px; }
-  .code { font-size: 0.76rem; }
 }
 `;
 
@@ -250,50 +222,26 @@ export default function App() {
 
       <main id="top">
         <section id="about" className="hero">
-          <div className="wrap hero-grid">
-            <div>
-              <div className="status"><span className="dot" />Open to Java full-stack roles</div>
-              <h3>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h3>
-              <p className="lead">
-                Computer Science graduate and Developer experienced in Java full-stack engineering using Spring Boot, Microservices, REST APIs, React.js, and TypeScript. Skilled in architecting secure web systems, optimizing frontend rendering, containerizing with Docker and Kubernetes, and building AI-driven solutions using LLMs and the Gemini API.
-              </p>
-              <div className="actions">
-                <a href="#projects" className="btn btn-solid">🚀 See my projects</a>
-                <a href="#contact" className="btn btn-ghost">💬 Get in touch</a>
-              </div>
-              <div className="social-btns">
-                <a className="btn btn-ghost" href="https://github.com/Payal-Jadhao" target="_blank" rel="noreferrer">🐙 GitHub</a>
-                <a className="btn btn-ghost" href="https://linkedin.com/in/payaljadhao" target="_blank" rel="noreferrer">💼 LinkedIn</a>
-                <a className="btn btn-ghost" href="mailto:payaljadhao2709@gmail.com">✉️ Email</a>
-              </div>
+          <div className="wrap hero-in">
+            <h1>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h1>
+            <p className="lead">
+              Computer Science graduate and Developer with hands-on experience in Java full stack development using Spring Boot, REST APIs, Microservices architecture, React.js, and TypeScript. Skilled in designing, developing, debugging, and maintaining scalable applications, integrating frontend and backend systems, containerizing and deploying with Docker, Kubernetes, and CI/CD pipelines, and collaborating with cross-functional teams in Agile environments. Experienced in code reviews, coding standards, and researching new technologies, including LLM/AI integration.
+            </p>
+            <div className="actions">
+              <a href="#projects" className="btn btn-solid">🚀 See my projects</a>
+              <a href="#contact" className="btn btn-ghost">💬 Get in touch</a>
             </div>
-
-            <div className="snap">
-              <div className="snap-head">
-                <span className="avatar">PJ</span>
-                <div><strong>Payal Jadhao</strong><small>Java Full-Stack & AI Developer</small></div>
-              </div>
-              <div className="pillar">
-                <span className="emo">☕</span>
-                <div><h3>Java Full-Stack & Microservices</h3><p>Enterprise backends with Spring Boot, Spring Security, JWT, Hibernate/JPA, REST APIs, Docker, and Microservices.</p></div>
-              </div>
-              <div className="pillar">
-                <span className="emo">⚛️</span>
-                <div><h3>React.js & Frontend</h3><p>Hands-on production experience in React.js, TypeScript, Tailwind CSS, and state flow, delivering ~12% faster load times.</p></div>
-              </div>
-              <div className="pillar">
-                <span className="emo">🤖</span>
-                <div><h3>LLM & Agentic AI</h3><p>Prompt engineering, context-window design, and Gemini AI API integration to power contextual generation in DevPrepPal.</p></div>
-              </div>
+            <div className="social-btns">
+              <a className="btn btn-ghost" href="https://github.com/Payal-Jadhao" target="_blank" rel="noreferrer">🐙 GitHub</a>
+              <a className="btn btn-ghost" href="https://linkedin.com/in/payaljadhao" target="_blank" rel="noreferrer">💼 LinkedIn</a>
             </div>
           </div>
         </section>
 
-        <section id="skills" className="sec">
+        <section id="skills" className="sec" style={{ paddingTop: 0 }}>
           <div className="wrap">
             <div className="sec-head">
-              <h2>Skills</h2>
-              <p>Core technical proficiencies across backend, frontend, databases, DevOps, and AI engineering.</p>
+              <h2>Technical Skills</h2>
             </div>
             <div className="skills">
               {SKILLS.map(([title, items]) => (
@@ -308,7 +256,7 @@ export default function App() {
 
         <section id="experience" className="sec" style={{ paddingTop: 0 }}>
           <div className="wrap">
-            <div className="sec-head"><h2>Experience</h2></div>
+            <div className="sec-head"><h2>Professional Experience</h2></div>
             <article className="job">
               <div className="job-meta">
                 <strong>June 2025 – Oct 2025</strong>
@@ -320,7 +268,7 @@ export default function App() {
                   <li>Designed, developed, and maintained responsive application features using React.js, TypeScript, HTML5, and CSS3 with Tailwind/Grid layouts, improving page load time by ~12%.</li>
                   <li>Developed and integrated REST APIs for CRUD operations, performing debugging and optimization that improved real-time data-rendering efficiency by ~15%.</li>
                   <li>Collaborated with a cross-functional team of 4–5 members in an Agile environment, participating in code reviews and managing API data flow and state with centralized error handling, reducing UI-related errors by ~10%.</li>
-                  <li>Followed coding standards and best practices to ensure code quality, worked with CI/CD pipelines and Docker-based deployments to streamline releases, and researched new technologies to improve development efficiency.</li>
+                  <li>Followed coding standards and best practices to ensure code quality, worked with CI/CD pipelines and Docker-based deployments, and researched new technologies to improve development efficiency.</li>
                 </ul>
               </div>
             </article>
@@ -329,19 +277,15 @@ export default function App() {
 
         <section id="projects" className="sec" style={{ paddingTop: 0 }}>
           <div className="wrap">
-            <div className="sec-head">
-              <h2>Projects</h2>
-              <p>Full-stack and AI-driven applications showcasing architecture, performance, and API integration.</p>
-            </div>
+            <div className="sec-head"><h2>Projects</h2></div>
             <div className="projects">
               {PROJECTS.map((p) => (
                 <article className="card project" key={p.name}>
                   <div className="p-top">
                     <h3>{p.name}</h3>
-                    <a href="https://github.com/Payal-Jadhao" target="_blank" rel="noreferrer">View on GitHub</a>
+                    {p.link && <a href={p.link[0]} target="_blank" rel="noreferrer">{p.link[1]}</a>}
                   </div>
                   <p className="kind">{p.kind}</p>
-                  <p>{p.text}</p>
                   <ul className="list">{p.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
                   <div className="tags">{p.stack.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
                 </article>
@@ -355,9 +299,9 @@ export default function App() {
             <div>
               <h3 className="h">Education</h3>
               <div className="card">
-                <h4>Bachelor of Engineering (B.E.) - Computer Science</h4>
+                <h4>Bachelor of Engineering (B.E.) – Computer Science</h4>
                 <p>COE&amp;T, Akola · 2021 – 2025</p>
-                <p className="score">CGPA: 8.56 / 10</p>
+                <p className="score">CGPA: 8.56</p>
               </div>
               <div className="card">
                 <h4>Jay Bajrang High School and Jr. College, Kumbhari</h4>
@@ -391,13 +335,12 @@ export default function App() {
             <div className="contact">
               <div>
                 <h2>Open to New Opportunities!</h2>
-                <p>I am seeking a Developer role to build and maintain robust Java applications and AI-powered solutions. Whether you have an opportunity or want to collaborate, feel free to reach out!</p>
+                <p>Seeking a Developer role to build and maintain robust Java applications and AI-powered solutions. Whether you have an opportunity or want to collaborate, feel free to reach out!</p>
               </div>
               <div className="c-list">
                 <a className="c-item" href="mailto:payaljadhao2709@gmail.com"><span><small>📧 Email</small>payaljadhao2709@gmail.com</span></a>
                 <a className="c-item" href="tel:+917507394873"><span><small>📞 Phone</small>+91 7507394873</span></a>
-                <a className="c-item" href="https://payal-jadhao.github.io/PAYAL-PORTFOLIO" target="_blank" rel="noreferrer"><span><small>🌐 Live Portfolio</small>payal-jadhao.github.io/PAYAL-PORTFOLIO</span></a>
-                <div className="c-item"><span><small>📍 Location</small>Maharashtra, India</span></div>
+                <a className="c-item" href="https://payal-jadhao.github.io/PAYAL-PORTFOLIO/" target="_blank" rel="noreferrer"><span><small>🌐 Portfolio</small>payal-jadhao.github.io/PAYAL-PORTFOLIO/</span></a>
               </div>
             </div>
           </div>
