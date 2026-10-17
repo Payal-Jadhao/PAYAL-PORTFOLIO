@@ -22,6 +22,7 @@ const PROJECTS = [
   {
     name: 'DevPrepPal',
     kind: 'AI-Powered Developer Preparation Platform · Final Year B.E. R&D Project',
+    link: ['https://dev-prep-pal.vercel.app', 'View live'],
     points: [
       'Designed a secure Java/Spring Boot backend with Spring Security, JWT authentication and MongoDB, achieving a ~5% improvement in interview lifecycle processing.',
       'Designed an AI interview-preparation system using Gemini AI to generate context-aware, role-specific questions from candidate resumes; compared prompt-engineering strategies, supporting up to 25 questions per session.',
@@ -40,16 +41,6 @@ const PROJECTS = [
       'Implemented Google OAuth2 SSO and OTP-based authentication; documented REST APIs with Swagger / OpenAPI.',
     ],
     stack: ['Java 21', 'Spring Boot 3', 'Spring Security', 'JWT', 'OAuth2', 'WebSocket (STOMP)', 'PostgreSQL', 'H2', 'React 19', 'TypeScript', 'Tailwind CSS', 'Gemini AI API', 'Swagger / OpenAPI'],
-  },
-  {
-    name: 'Student Management System',
-    kind: 'Full-Stack CRUD Application',
-    points: [
-      'Layered Spring Boot app with Controller, Service and Repository layers, validation, and GET, POST, PUT, DELETE endpoints tested via Postman.',
-      'Transactional database operations with MySQL and Hibernate ORM.',
-      'Reusable React components with responsive styling, connected through Axios, covering complete student record workflows.',
-    ],
-    stack: ['React.js', 'Spring Boot', 'Hibernate', 'MySQL', 'REST APIs', 'Postman', 'JavaScript'],
   },
 ];
 
@@ -112,6 +103,7 @@ html { scroll-behavior: smooth; }
 .hero { padding: clamp(112px, 16vw, 168px) 0 clamp(48px, 8vw, 88px); }
 .hero-in { max-width: 820px; }
 .hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.035em; }
+.hero h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.35rem, 2.5vw, 1.65rem); line-height: 1.25; letter-spacing: -0.015em; }
 .hero .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); margin: 22px 0 32px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .social-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
@@ -223,7 +215,7 @@ export default function App() {
       <main id="top">
         <section id="about" className="hero">
           <div className="wrap hero-in">
-            <h1>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h1>
+            <h3>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h3>
             <p className="lead">
               Computer Science graduate and Developer with hands-on experience in Java full stack development using Spring Boot, REST APIs, Microservices architecture, React.js, and TypeScript. Skilled in designing, developing, debugging, and maintaining scalable applications, integrating frontend and backend systems, containerizing and deploying with Docker, Kubernetes, and CI/CD pipelines, and collaborating with cross-functional teams in Agile environments. Experienced in code reviews, coding standards, and researching new technologies, including LLM/AI integration.
             </p>
