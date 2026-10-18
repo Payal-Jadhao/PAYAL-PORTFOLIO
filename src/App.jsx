@@ -44,6 +44,8 @@ const PROJECTS = [
   },
 ];
 
+const RESUME_URL = 'https://drive.google.com/file/d/19jsCE0Ih9kWv6iRS3XsSd8K2XH30A5aF/view?usp=drive_link';
+
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap');
 
@@ -101,13 +103,16 @@ html { scroll-behavior: smooth; }
 
 /* hero */
 .hero { padding: clamp(112px, 16vw, 168px) 0 clamp(48px, 8vw, 88px); }
-.hero-in { max-width: 820px; }
+.hero-in { max-width: 1200px; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
 .hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.035em; }
 .hero h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.35rem, 2.5vw, 1.65rem); line-height: 1.25; letter-spacing: -0.015em; }
-.hero .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); margin: 22px 0 32px; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.social-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.social-btns .btn { background: var(--surface); }
+.hero .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); margin: 22px 0 0; }
+.hero-side { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 12px; }
+.hero-side-title { font-family: var(--display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.hero-side .btn { width: 100%; justify-content: flex-start; }
+.hero-side .btn:hover { background: #e4e9e8; border-color: #c9d3d0; color: var(--ink); transform: none; }
+@media (prefers-color-scheme: dark) { .hero-side .btn:hover { background: #1f302d; border-color: #35504b; color: var(--ink); } }
+.hero-side .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
 /* skills */
 .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
@@ -168,12 +173,13 @@ a.c-item:hover { background: rgba(255,255,255,.07); }
   .drawer.open { display: flex; flex-direction: column; padding: 8px clamp(20px, 5vw, 40px) 20px; border-top: 1px solid var(--line); background: var(--bg); }
   .drawer a { padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 500; }
   .drawer .btn { margin-top: 16px; border: 0; padding: 12px; }
+  .hero-in { grid-template-columns: 1fr; }
   .projects, .edu { grid-template-columns: 1fr; }
   .job { grid-template-columns: 1fr; gap: 10px; }
 }
 @media (max-width: 560px) {
   .skills { grid-template-columns: 1fr; }
-  .actions .btn { flex: 1 1 100%; }
+  .hero-side .row { grid-template-columns: 1fr; }
   .p-top { flex-direction: column; gap: 4px; }
 }
 `;
@@ -215,18 +221,23 @@ export default function App() {
       <main id="top">
         <section id="about" className="hero">
           <div className="wrap hero-in">
-            <h3>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h3>
-            <p className="lead">
-              Computer Science graduate and Developer with hands-on experience in Java full stack development using Spring Boot, REST APIs, Microservices architecture, React.js, and TypeScript. Skilled in designing, developing, debugging, and maintaining scalable applications, integrating frontend and backend systems, containerizing and deploying with Docker, Kubernetes, and CI/CD pipelines, and collaborating with cross-functional teams in Agile environments. Experienced in code reviews, coding standards, and researching new technologies, including LLM/AI integration.
-            </p>
-            <div className="actions">
-              <a href="#projects" className="btn btn-solid">🚀 See my projects</a>
-              <a href="#contact" className="btn btn-ghost">💬 Get in touch</a>
+            <div>
+              <h3>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h3>
+              <p className="lead">
+                Computer Science graduate and Developer with hands-on experience in Java full stack development using Spring Boot, REST APIs, Microservices architecture, React.js, and TypeScript. Skilled in designing, developing, debugging, and maintaining scalable applications, integrating frontend and backend systems, containerizing and deploying with Docker, Kubernetes, and CI/CD pipelines, and collaborating with cross-functional teams in Agile environments. Experienced in code reviews, coding standards, and researching new technologies, including LLM/AI integration.
+              </p>
             </div>
-            <div className="social-btns">
-              <a className="btn btn-ghost" href="https://github.com/Payal-Jadhao" target="_blank" rel="noreferrer">🐙 GitHub</a>
-              <a className="btn btn-ghost" href="https://linkedin.com/in/payaljadhao" target="_blank" rel="noreferrer">💼 LinkedIn</a>
-            </div>
+
+            <aside className="hero-side" aria-label="Quick links">
+              <p className="hero-side-title">Quick links</p>
+              <a className="btn btn-ghost" href={RESUME_URL} target="_blank" rel="noreferrer">📄 View Resume</a>
+              <a className="btn btn-ghost" href="#projects">🚀 See my projects</a>
+              <a className="btn btn-ghost" href="#contact">💬 Get in touch</a>
+              <div className="row">
+                <a className="btn btn-ghost" href="https://github.com/Payal-Jadhao" target="_blank" rel="noreferrer">🐙 GitHub</a>
+                <a className="btn btn-ghost" href="https://linkedin.com/in/payaljadhao" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+              </div>
+            </aside>
           </div>
         </section>
 
