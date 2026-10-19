@@ -262,7 +262,7 @@ export default function App() {
             <div className="sec-head"><h2>Professional Experience</h2></div>
             <article className="job">
               <div className="job-meta">
-                <strong>June 2025 – Oct 2025</strong>
+                <strong>June 2025 – Oct 2026</strong>
                 <p>Edgemine Technologies LLP</p>
               </div>
               <div>
