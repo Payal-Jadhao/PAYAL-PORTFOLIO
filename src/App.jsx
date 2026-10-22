@@ -9,13 +9,12 @@ const NAV = [
 ];
 
 const SKILLS = [
-  ['Programming Languages', ['Java', 'Core Java', 'Java 8', 'Java 21', 'TypeScript', 'JavaScript', 'NodeJS', 'OOP']],
-  ['Backend & Architecture', ['Spring Boot', 'Spring Framework', 'Spring Data JPA', 'Spring Security', 'Hibernate', 'REST APIs', 'Web Services', 'Microservices Architecture', 'JWT', 'OAuth2', 'WebSocket (STOMP)', 'Java Full Stack Development']],
-  ['Frontend', ['React.js', 'React Hooks', 'HTML5', 'CSS3', 'Tailwind CSS', 'Axios']],
-  ['Database', ['MySQL', 'MongoDB', 'PostgreSQL', 'H2', 'SQL', 'Query Optimization']],
-  ['DevOps & Deployment', ['Docker', 'Kubernetes', 'CI/CD Pipelines', 'Google Cloud']],
-  ['Research & AI', ['Prompt Engineering', 'LLM Integration (Gemini AI API)', 'RAG', 'Design Thinking']],
-  ['Tools & Practices', ['Git', 'GitHub', 'Maven', 'Postman', 'Swagger / OpenAPI', 'Agile Methodology', 'Code Reviews', 'Debugging & Troubleshooting', 'Collaboration Tools']],
+  ['Programming Language', ['Java']],
+  ['Backend', ['Spring Boot', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'REST APIs', 'Microservices', 'JWT', 'WebSocket']],
+  ['Frontend', ['React.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS']],
+  ['Database', ['MySQL', 'PostgreSQL', 'MongoDB']],
+  ['DevOps & Deployment', ['Docker', 'Kubernetes', 'CI/CD Pipelines']],
+  ['GenAI', ['Generative AI (Gemini API)', 'Prompt Engineering']],
 ];
 
 const PROJECTS = [
@@ -24,27 +23,27 @@ const PROJECTS = [
     kind: 'AI-Powered Developer Preparation Platform · Final Year B.E. R&D Project',
     link: ['https://dev-prep-pal.vercel.app', 'View live'],
     points: [
-      'Designed a secure Java/Spring Boot backend with Spring Security, JWT authentication and MongoDB, achieving a ~5% improvement in interview lifecycle processing.',
-      'Designed an AI interview-preparation system using Gemini AI to generate context-aware, role-specific questions from candidate resumes; compared prompt-engineering strategies, supporting up to 25 questions per session.',
-      'Built and tested a React.js UI (interview routing, live chat, quizzes, score analytics) via user-feedback cycles, improving engagement by approx. 10%.',
+      'Built a secure Spring Boot backend with Spring Security, JWT and MongoDB, improving interview lifecycle processing by ~5%.',
+      'Used Generative AI (Gemini) to create role-specific interview questions from resumes, up to 25 per session.',
+      'Developed a React.js UI with live chat, quizzes and score analytics, improving engagement by ~10%.',
     ],
-    stack: ['Java', 'Spring Boot', 'Spring Security', 'MongoDB', 'JWT', 'React.js', 'Gemini AI API', 'REST APIs', 'Microservices', 'Docker'],
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MongoDB', 'React.js', 'Gemini API', 'REST APIs', 'Microservices', 'Docker'],
   },
   {
     name: 'TeamCRM',
     kind: 'CRM & Task Management Platform with AI Copilot · R&D Project',
     link: ['https://team-crm-iota.vercel.app', 'View live'],
     points: [
-      'Built a full-stack CRM and Jira-style task platform with Admin, Manager and Employee roles using JWT (access + refresh), BCrypt and method-level RBAC.',
-      'Designed a server-authoritative time tracker (UTC clock, one active timer per user, auto-pause) with live WebSocket sync to prevent time tampering.',
-      'Developed an agentic Gemini AI Copilot using RAG over live task, deal, user and meeting data, with cloud/offline modes and one-click AI-to-task conversion.',
-      'Implemented Google OAuth2 SSO and OTP-based authentication; documented REST APIs with Swagger / OpenAPI.',
+      'Built a full-stack CRM and Jira-style task platform with Admin, Manager and Employee roles using JWT (access + refresh) and method-level RBAC.',
+      'Designed a server-authoritative time tracker with live WebSocket sync to prevent time tampering.',
+      'Developed a Gemini-based GenAI Copilot over live task, deal and meeting data, with one-click AI-to-task conversion.',
+      'Implemented OTP-based authentication.',
     ],
-    stack: ['Java 21', 'Spring Boot 3', 'Spring Security', 'JWT', 'OAuth2', 'WebSocket (STOMP)', 'PostgreSQL', 'H2', 'React 19', 'TypeScript', 'Tailwind CSS', 'Gemini AI API', 'Swagger / OpenAPI'],
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'WebSocket', 'PostgreSQL', 'React.js', 'TypeScript', 'Tailwind CSS', 'Gemini API'],
   },
 ];
 
-const RESUME_URL = 'https://drive.google.com/file/d/19jsCE0Ih9kWv6iRS3XsSd8K2XH30A5aF/view?usp=drive_link';
+const RESUME_URL = 'https://drive.google.com/file/d/18VKHkZP6Alz8xVQrVAbousjS-riIDHQy/view?usp=drivesdk';
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap');
@@ -222,9 +221,9 @@ export default function App() {
         <section id="about" className="hero">
           <div className="wrap hero-in">
             <div>
-              <h3>Java Full-Stack Developer | React.js Specialist | Generative & Agentic AI</h3>
+              <h3>Software Engineer | React.js Developer | Java Full-Stack (Spring Boot) | Generative AI</h3>
               <p className="lead">
-                Computer Science graduate and Developer with hands-on experience in Java full stack development using Spring Boot, REST APIs, Microservices architecture, React.js, and TypeScript. Skilled in designing, developing, debugging, and maintaining scalable applications, integrating frontend and backend systems, containerizing and deploying with Docker, Kubernetes, and CI/CD pipelines, and collaborating with cross-functional teams in Agile environments. Experienced in code reviews, coding standards, and researching new technologies, including LLM/AI integration.
+                Software Engineer with 1+ year of experience as a Developer building web applications and integrating REST APIs using React.js, TypeScript and Tailwind CSS in Agile teams. Self-learning Java full stack development and have built two full-stack projects using Java, Spring Boot, Spring Security, JWT, MongoDB/PostgreSQL and the Gemini Generative AI API. Seeking a Java Full Stack Developer / Software Engineer role.
               </p>
             </div>
 
@@ -268,10 +267,10 @@ export default function App() {
               <div>
                 <h3>Developer</h3>
                 <ul className="list">
-                  <li>Designed, developed, and maintained responsive application features using React.js, TypeScript, HTML5, and CSS3 with Tailwind/Grid layouts, improving page load time by ~12%.</li>
-                  <li>Developed and integrated REST APIs for CRUD operations, performing debugging and optimization that improved real-time data-rendering efficiency by ~15%.</li>
-                  <li>Collaborated with a cross-functional team of 4–5 members in an Agile environment, participating in code reviews and managing API data flow and state with centralized error handling, reducing UI-related errors by ~10%.</li>
-                  <li>Followed coding standards and best practices to ensure code quality, worked with CI/CD pipelines and Docker-based deployments, and researched new technologies to improve development efficiency.</li>
+                  <li>Built responsive application features using React.js, TypeScript, HTML5 and CSS3 with Tailwind/Grid layouts, improving page load time by ~12%.</li>
+                  <li>Integrated REST APIs for CRUD operations; debugging and optimization improved real-time data-rendering efficiency by ~15%.</li>
+                  <li>Worked in an Agile team of 4–5 members, doing code reviews and managing API data flow and state with centralized error handling, reducing UI errors by ~10%.</li>
+                  <li>Followed coding standards and best practices; worked with CI/CD pipelines and Docker-based deployments.</li>
                 </ul>
               </div>
             </article>
@@ -325,10 +324,6 @@ export default function App() {
                 <h4>React JS Free Course</h4>
                 <p>Certificate of Excellence, Scaler Topics</p>
               </div>
-              <div className="card">
-                <h4>Implement DevOps Workflows in Google Cloud</h4>
-                <p>Google Cloud Skill Badge</p>
-              </div>
             </div>
           </div>
         </section>
@@ -338,7 +333,7 @@ export default function App() {
             <div className="contact">
               <div>
                 <h2>Open to New Opportunities!</h2>
-                <p>Seeking a Developer role to build and maintain robust Java applications and AI-powered solutions. Whether you have an opportunity or want to collaborate, feel free to reach out!</p>
+                <p>Seeking a Java Full Stack Developer / Software Engineer role to build robust web applications and AI-powered solutions. Whether you have an opportunity or want to collaborate, feel free to reach out!</p>
               </div>
               <div className="c-list">
                 <a className="c-item" href="mailto:payaljadhao2709@gmail.com"><span><small>📧 Email</small>payaljadhao2709@gmail.com</span></a>
