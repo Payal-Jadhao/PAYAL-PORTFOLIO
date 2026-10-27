@@ -43,7 +43,7 @@ const PROJECTS = [
   },
 ];
 
-const RESUME_URL = 'https://drive.google.com/file/d/18VKHkZP6Alz8xVQrVAbousjS-riIDHQy/view?usp=drivesdk';
+const RESUME_URL = 'https://drive.google.com/file/d/1akVxmjS847laBwLJNIveRuZH7DQa7IBY/view?usp=sharing';
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap');
